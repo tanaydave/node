@@ -1,0 +1,22 @@
+// common js module
+
+// exports.sum =(a,b) => {
+//     return(a+b)
+
+// }
+// exports.diff =(a,b) => {
+//     return(a-b)
+
+// }
+
+// <-----------------ES module---------------->
+// in package.json "type" should be module to run ES modules
+// const sum =(a,b) => {
+//     return(a+b)
+
+// }
+// const diff =(a,b) => {
+//     return(a-b)
+
+// }
+// export {sum,diff}
