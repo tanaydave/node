@@ -16,7 +16,6 @@ const server = express();
 const productRouter = require('./routes/product')
 const userRouter = require('./routes/user')
 const mongoose = require("mongoose")
-const {Schema} = mongoose
 
 
 
@@ -41,19 +40,6 @@ server.use('/users',userRouter.router)
 
 
 //schema
-const productSchema = new Schema({
-  title:String,
-  description:String,
-  price:Number,
-  discountPercentage:Number,
-  rating:Number,
-  brand:String,
-  category:String,
-  thumbnail:String,
-  images:[String]
-})
-
-const Product = mongoose.model('product', productSchema);
 
 
 
