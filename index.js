@@ -10,17 +10,52 @@
 //      console.log(data)
 // })
 //<--------------------------------------------------------------->
-
+require ('dotenv').config()
 const express = require("express");
 const server = express();
 const productRouter = require('./routes/product')
 const userRouter = require('./routes/user')
+const mongoose = require("mongoose")
+const {Schema} = mongoose
 
 
 
+// database connection
+
+
+
+main().catch(err => console.log(err));
+
+async function main() {
+  await mongoose.connect('mongodb://127.0.0.1:27017/ecommerce');
+  console.log("database connected")
+
+  // use `await mongoose.connect('mongodb://user:password@127.0.0.1:27017/test');` if your database has auth enabled
+}
+
+
+//middlewares
 server.use(express.json())
 server.use('/products', productRouter.router)
 server.use('/users',userRouter.router)
+
+
+//schema
+const productSchema = new Schema({
+  title:String,
+  description:String,
+  price:Number,
+  discountPercentage:Number,
+  rating:Number,
+  brand:String,
+  category:String,
+  thumbnail:String,
+  images:[String]
+})
+
+const Product = mongoose.model('product', productSchema);
+
+
 
 
 
